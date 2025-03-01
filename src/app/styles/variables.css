@@ -1,0 +1,99 @@
+:root {
+  /* Colors */
+  --primary-bgc: #fafafa;
+  --secondary-bgc: #fff;
+  --text-primary: #222;
+  --text-secondary: #999;
+  --text-opaciry: #d1d1d1;
+  --border-color: #ebebeb;
+  --positive: #2ee5ac;
+  --negative: #ff8346;
+  --gray1: #5c5c5c;
+  --gray2: #7d7d7d;
+
+  /* Fonts */
+  --font-family: montserrat, sans-serif;
+  --font-size-h1: 1.625rem;
+  --font-weight-h1: 700;
+  --line-height-h1: 2rem;
+  --font-h1: normal normal var(--font-weight-h1) var(--font-size-h1) / var(--line-height-h1)
+    var(--font-family);
+  --font-size-h2: 1.125rem;
+  --font-weight-h2: 500;
+  --line-height-h2: 1.375rem;
+  --font-h2: normal normal var(--font-weight-h2) var(--font-size-h2) / var(--line-height-h2)
+    var(--font-family);
+  --font-size-h3: 0.875rem;
+  --font-weight-h3: 600;
+  --line-height-h3: 1.0625rem;
+  --font-h3: normal normal var(--font-weight-h3) var(--font-size-h3) / var(--line-height-h3)
+    var(--font-family);
+  --font-size-body1: 0.875rem;
+  --font-weight-body1: 400;
+  --line-height-body1: 1.0625rem;
+  --font-body1: normal normal var(--font-weight-body1) var(--font-size-body1) /
+    var(--line-height-body1) var(--font-family);
+  --font-size-body2: 0.8125rem;
+  --font-weight-body2: 400;
+  --line-height-body2: 0.9375rem;
+  --font-body2: normal normal var(--font-weight-body2) var(--font-size-body2) /
+    var(--line-height-body2) var(--font-family);
+  --font-size-body3: 0.75rem;
+  --font-weight-body3: 400;
+  --line-height-body3: 0.875rem;
+  --font-body3: normal normal var(--font-weight-body3) var(--font-size-body3) /
+    var(--line-height-body3) var(--font-family);
+  --font-size-body4: 0.6875rem;
+  --font-weight-body4: 500;
+  --line-height-body4: 0.8125rem;
+  --font-body4: normal normal var(--font-weight-body4) var(--font-size-body4) /
+    var(--line-height-body4) var(--font-family);
+
+  /* Radius */
+  --rounded-sm: 0.25rem;
+  --rounded-md: 0.625rem;
+  --rounded-lg: 0.875rem;
+
+  /* Shadow */
+  --box-shadow: 0rem 0rem 1.25rem 0rem rgb(0 0 0 / 15%);
+
+  /* Shadow */
+
+  :root {
+    --spacing-4: 0.25rem;
+    --spacing-6: 0.375rem;
+    --spacing-8: 0.5rem;
+    --spacing-10: 0.625rem;
+    --spacing-12: 0.75rem;
+    --spacing-14: 0.875rem;
+    --spacing-16: 1rem;
+    --spacing-18: 1.125rem;
+    --spacing-20: 1.25rem;
+    --spacing-22: 1.375rem;
+    --spacing-24: 1.5rem;
+    --spacing-26: 1.625rem;
+    --spacing-28: 1.75rem;
+    --spacing-30: 1.875rem;
+    --spacing-32: 2rem;
+    --spacing-34: 2.125rem;
+    --spacing-36: 2.25rem;
+    --spacing-38: 2.375rem;
+    --spacing-40: 2.5rem;
+    --spacing-42: 2.625rem;
+    --spacing-44: 2.75rem;
+    --spacing-46: 2.875rem;
+    --spacing-48: 3rem;
+    --spacing-50: 3.125rem;
+    --spacing-52: 3.25rem;
+    --spacing-54: 3.375rem;
+    --spacing-56: 3.5rem;
+    --spacing-58: 3.625rem;
+    --spacing-60: 3.75rem;
+    --spacing-62: 3.875rem;
+    --spacing-64: 4rem;
+    --spacing-66: 4.125rem;
+    --spacing-68: 4.25rem;
+    --spacing-70: 4.375rem;
+    --spacing-72: 4.5rem;
+  }
+}

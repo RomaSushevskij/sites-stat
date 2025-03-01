@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  align-items: center;
+
+  border: 0.0625rem solid var(--border-color);
+  border-radius: var(--rounded-lg);
+
+  background: var(--secondary-bgc);
+
+  transition: all 0.15s ease-in-out;
+}
+
+.root:focus-within {
+  border-color: var(--text-secondary);
+}
+
+.input {
+  width: 100%;
+  padding: 0.9375rem 0.75rem;
+  border: none;
+  border-radius: var(--rounded-lg);
+
+  font: var(--font-body2);
+  color: var(--text-primary);
+
+  background: var(--secondary-bgc);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-opaciry);
+}
+
+.prepend,
+.append {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prepend {
+  padding-inline-start: 0.75rem;
+}
+
+.append {
+  padding-inline-end: 0.75rem;
+}

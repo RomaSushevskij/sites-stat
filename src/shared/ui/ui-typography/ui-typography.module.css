@@ -1,0 +1,31 @@
+.root {
+  margin: 0;
+}
+
+.h1 {
+  font: var(--font-h1);
+}
+
+.h2 {
+  font: var(--font-h2);
+}
+
+.h3 {
+  font: var(--font-h3);
+}
+
+.body1 {
+  font: var(--font-body1);
+}
+
+.body2 {
+  font: var(--font-body2);
+}
+
+.body3 {
+  font: var(--font-body3);
+}
+
+.body4 {
+  font: var(--font-body4);
+}
