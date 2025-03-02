@@ -16,14 +16,14 @@ export const TestsTableNavigationCell = ({
 }) => {
   if (status === TestStatus.DRAFT) {
     return (
-      <UiLink to={RoutePath.getPath(AppRoutes.FINALIZE, { id })}>
+      <UiLink to={RoutePath.getPath(AppRoutes.FINALIZE, { testId: id })}>
         <UiButton className={clsx(s.root, s.draft)}>Finalize</UiButton>
       </UiLink>
     );
   }
 
   return (
-    <UiLink to={RoutePath.getPath(AppRoutes.RESULTS, { id })}>
+    <UiLink to={RoutePath.getPath(AppRoutes.RESULTS, { testId: id })}>
       <UiButton className={s.root} color={"positive"}>
         Results
       </UiButton>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useTestsQuery } from "@/entities/tests";
 import { useSitesQuery } from "@/entities/sites";
@@ -8,10 +8,24 @@ import { TestsTable } from "@/features/tests-table";
 import { SiteTestsPageLayout } from "./site-tests-page-layout.tsx";
 
 export const SiteTestsPage = () => {
-  const { data: tests, isLoading: isSitesLoading } = useTestsQuery();
+  const { data: normalizedTests, isLoading: isSitesLoading } = useTestsQuery();
   const { isLoading: isTestsLoading } = useSitesQuery();
 
   const [searchFilterValue, setSearchFilterValue] = useState("");
+
+  const filteredTests = useMemo(() => {
+    if (!normalizedTests) return [];
+
+    const tests = normalizedTests.ids.map((testId) => normalizedTests.entities[testId]);
+
+    if (!searchFilterValue) {
+      return tests;
+    }
+
+    return tests.filter((test) =>
+      test.name.toLowerCase().includes(searchFilterValue.toLowerCase()),
+    );
+  }, [searchFilterValue, normalizedTests]);
 
   const isDataLoading = isSitesLoading || isTestsLoading;
 
@@ -26,12 +40,12 @@ export const SiteTestsPage = () => {
         <TestsSearchFilter
           value={searchFilterValue}
           onChange={setSearchFilterValue}
-          testsCount={tests?.ids.length ?? 0}
+          testsCount={filteredTests.length}
         />
       }
       table={
         <TestsTable
-          searchFilter={searchFilterValue}
+          rows={filteredTests}
           noData={<EmptySearchResults onResetBtnClick={resetSearchFilter} />}
         />
       }

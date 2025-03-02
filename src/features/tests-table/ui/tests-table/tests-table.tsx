@@ -1,8 +1,8 @@
-import { ReactElement, useMemo } from "react";
+import { ReactElement } from "react";
 
 import { UiTable } from "@/shared/ui/ui-table";
 import { UiTypography } from "@/shared/ui/ui-typography";
-import { Test, useTestsQuery } from "@/entities/tests";
+import { Test } from "@/entities/tests";
 import { useSitesQuery } from "@/entities/sites";
 
 import { defineColumns } from "../../lib/defineColumns.ts";
@@ -11,33 +11,12 @@ import { TestTableSiteCell } from "../test-table-type-cell/test-table-site-cell.
 import { TestsTableNavigationCell } from "../tests-table-navigation-cell/tests-table-navigation-cell.tsx";
 import { TestsTableNameCell } from "../tests-table-name-cell/tests-table-name-cell.tsx";
 
-export const TestsTable = ({
-  searchFilter,
-  noData,
-}: {
-  searchFilter: string;
-  noData?: ReactElement;
-}) => {
-  const { data: tests } = useTestsQuery();
+export const TestsTable = ({ noData, rows }: { rows: Test[]; noData?: ReactElement }) => {
   const { data: sites } = useSitesQuery();
 
   const columns = defineColumns(sites);
 
-  const rows = useMemo<Test[]>(() => {
-    if (!tests) return [];
-
-    return tests.ids.map((testId) => tests.entities[testId]);
-  }, [tests]);
-
-  const filteredRows = useMemo(() => {
-    if (!searchFilter) {
-      return rows;
-    }
-
-    return rows.filter((row) => row.name.toLowerCase().includes(searchFilter.toLowerCase()));
-  }, [searchFilter, rows]);
-
-  if (!filteredRows.length) {
+  if (!rows.length) {
     return (
       noData ?? (
         <UiTypography variant={"h2"}>{"Your search did not match any results."}</UiTypography>
@@ -48,7 +27,7 @@ export const TestsTable = ({
   return (
     <UiTable
       columns={columns}
-      rows={filteredRows}
+      rows={rows}
       canRowSelect
       rowKey={"id"}
       renderCell={({ name: fieldName, value, rowItem: { name, type, status, id } }) => {

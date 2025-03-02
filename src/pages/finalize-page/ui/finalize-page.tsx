@@ -7,9 +7,9 @@ import { useTestByIdQuery } from "@/entities/tests";
 import s from "./finalize-page.module.css";
 
 export const FinalizePage = () => {
-  const params = useParams<{ id: string }>();
+  const params = useParams<{ testId: string }>();
 
-  const { data: test, isLoading } = useTestByIdQuery({ id: Number(params.id) });
+  const { data: test, isLoading } = useTestByIdQuery({ id: Number(params.testId) });
 
   const renderPageContent = () => {
     if (isLoading) {

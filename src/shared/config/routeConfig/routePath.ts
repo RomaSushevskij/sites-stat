@@ -9,8 +9,8 @@ export const RoutePath: Record<AppRoutes, string> & {
   getPath: <T extends Record<string, string | number>>(route: AppRoutes, params: T) => string;
 } = {
   [AppRoutes.MAIN]: "/",
-  [AppRoutes.RESULTS]: "/results/:id",
-  [AppRoutes.FINALIZE]: "/finalize/:id",
+  [AppRoutes.RESULTS]: "/results/:testId",
+  [AppRoutes.FINALIZE]: "/finalize/:testId",
   [AppRoutes.NOT_FOUND]: "*",
 
   getPath: (route, params) => {
