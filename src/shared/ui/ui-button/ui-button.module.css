@@ -1,4 +1,6 @@
 .root {
+  cursor: pointer;
+
   padding: var(--spacing-6) var(--spacing-12);
   border: none;
   border-radius: var(--rounded-md);
@@ -7,6 +9,8 @@
   color: var(--secondary-bgc);
 
   background: var(--gray2);
+
+  transition: var(--transition);
 }
 
 .positive {
@@ -15,4 +19,16 @@
 
 .negative {
   background: var(--negative);
+}
+
+@media (hover: hover) {
+  .root:hover {
+    filter: brightness(0.9);
+  }
+}
+
+@media (hover: none) {
+  .root:active {
+    filter: brightness(0.9);
+  }
 }
