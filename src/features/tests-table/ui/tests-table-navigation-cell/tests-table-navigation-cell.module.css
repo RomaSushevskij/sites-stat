@@ -1,0 +1,8 @@
+.root {
+  display: inline-block;
+  width: 5.9375rem;
+}
+
+.draft {
+  font-weight: 500;
+}

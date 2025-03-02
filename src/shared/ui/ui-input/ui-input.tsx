@@ -3,9 +3,8 @@ import {
   DetailedHTMLProps,
   FC,
   InputHTMLAttributes,
-  ReactElement,
   KeyboardEvent,
-  useState,
+  ReactElement,
 } from "react";
 import clsx from "clsx";
 
@@ -30,11 +29,8 @@ export const UiInput: FC<DefaultProps & CustomProps> = ({
   onEnter,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = useState(value ?? "");
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value;
-    setInternalValue(inputValue);
     onTextChange?.(inputValue);
     onChange?.(event);
   };
@@ -53,7 +49,7 @@ export const UiInput: FC<DefaultProps & CustomProps> = ({
 
       <input
         className={s.input}
-        value={internalValue}
+        value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         {...props}

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { SortState, TableColumn } from "../../model/types.ts";
 
-const defineDefaultSortData = <T, SortedValue>(
-  columns: TableColumn<T, SortedValue>[],
-): SortState<T> | null => {
+const defineDefaultSortData = <T>(columns: TableColumn<T>[]): SortState<T> | null => {
   const defaultSortableColumn = columns.find(
     ({ sortable, sortOrder }) => Boolean(sortable) && Boolean(sortOrder),
   );
@@ -16,14 +14,10 @@ const defineDefaultSortData = <T, SortedValue>(
   };
 };
 
-export const useSortState = <T, SortedValue>({
-  columns,
-}: {
-  columns: TableColumn<T, SortedValue>[];
-}) => {
+export const useSortState = <T>({ columns }: { columns: TableColumn<T>[] }) => {
   const [sortState, setSortState] = useState<SortState<T> | null>(defineDefaultSortData(columns));
 
-  const changeSortState = (column: TableColumn<T, SortedValue>) => {
+  const changeSortState = (column: TableColumn<T>) => {
     if (!column.sortable) return;
 
     if (column.name !== sortState?.name) {
@@ -53,11 +47,11 @@ export const useSortState = <T, SortedValue>({
     }
   };
 
-  const isColumnSortable = (column: TableColumn<T, SortedValue>) => {
+  const isColumnSortable = (column: TableColumn<T>) => {
     return column.sortable;
   };
 
-  const isActiveSortColumn = (column: TableColumn<T, SortedValue>) => {
+  const isActiveSortColumn = (column: TableColumn<T>) => {
     return column.name === sortState?.name;
   };
 

@@ -1,0 +1,15 @@
+.draft {
+  color: var(--gray1);
+}
+
+.paused {
+  color: var(--warning);
+}
+
+.online {
+  color: var(--positive);
+}
+
+.stopped {
+  color: var(--negative);
+}

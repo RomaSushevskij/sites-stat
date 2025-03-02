@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacing-38);
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40dvh;
+}
+
+.reset_search_filter_btn {
+  width: 5.9375rem;
+}

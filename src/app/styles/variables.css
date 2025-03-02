@@ -7,9 +7,13 @@
   --text-opaciry: #d1d1d1;
   --border-color: #ebebeb;
   --positive: #2ee5ac;
-  --negative: #ff8346;
+  --warning: #ff8346;
+  --negative: #fe4848;
   --gray1: #5c5c5c;
   --gray2: #7d7d7d;
+  --blue-light: #8686ff;
+  --blue-light-alt: #c2c2ff;
+  --red-pink: #e14165;
 
   /* Fonts */
   --font-family: montserrat, sans-serif;
@@ -96,4 +100,9 @@
 
   /* Transitions */
   --transition: all 0.15s ease-in-out;
+
+  /* Test types */
+  --test-type-classic: var(--blue-light-alt);
+  --test-type-mvt: var(--red-pink);
+  --test-type-server_side: var(--blue-light);
 }

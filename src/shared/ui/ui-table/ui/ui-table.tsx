@@ -9,8 +9,8 @@ import { useSortState } from "../lib/sorting/useSortState.ts";
 import { getSortedRows } from "../lib/sorting/getSortedRows.ts";
 import s from "./ui-table.module.css";
 
-export type Props<T extends Record<string, string>, SortedValue> = {
-  columns: TableColumn<T, SortedValue>[];
+export type Props<T extends Record<string, any>> = {
+  columns: TableColumn<T>[];
   rows: T[];
   renderCell?: (props: { name: keyof T; value: T[keyof T]; rowItem: T }) => ReactElement;
   rowKey: keyof T;
@@ -18,29 +18,43 @@ export type Props<T extends Record<string, string>, SortedValue> = {
   onRowClick?: (row: T) => void;
 };
 
-export const UiTable = <T extends Record<string, any>, SortedValue>({
+export const UiTable = <T extends Record<string, any>>({
   columns,
   rows,
   rowKey,
   canRowSelect,
   onRowClick,
   ...props
-}: Props<T, SortedValue>) => {
-  const defaultAlign: TableColumn<T, SortedValue>["align"] = "left";
+}: Props<T>) => {
+  const defaultAlign: TableColumn<T>["align"] = "left";
 
   const { sortState, changeSortState, isActiveSortColumn, isColumnSortable } = useSortState({
     columns,
   });
 
+  const formattedRows = useMemo(() => {
+    return rows.map((row) => {
+      const formattedRow = { ...row };
+
+      columns.forEach((column) => {
+        if (column.format) {
+          formattedRow[column.name as keyof T] = column.format(row[column.name], row) as T[keyof T];
+        }
+      });
+
+      return formattedRow;
+    });
+  }, [rows, columns]);
+
   const sortedRows = useMemo(() => {
     const sortedColumn = columns.find((column) => column.name === sortState?.name);
 
     if (!sortedColumn) {
-      return rows;
+      return formattedRows;
     }
 
-    return getSortedRows({ rows, sortState, customSortRowsFn: sortedColumn.sortFn });
-  }, [rows, sortState]);
+    return getSortedRows({ rows: formattedRows, sortState, customSortRowsFn: sortedColumn.sortFn });
+  }, [formattedRows, sortState, columns]);
 
   const renderThead = (
     <tr>
@@ -65,7 +79,7 @@ export const UiTable = <T extends Record<string, any>, SortedValue>({
     </tr>
   );
 
-  const renderTd = (row: T, name: keyof T, align: TableColumn<T, SortedValue>["align"]) => {
+  const renderTd = (row: T, name: keyof T, align: TableColumn<T>["align"]) => {
     if (props.renderCell) {
       return (
         <td key={String(name)} className={s.td} align={align ?? defaultAlign}>

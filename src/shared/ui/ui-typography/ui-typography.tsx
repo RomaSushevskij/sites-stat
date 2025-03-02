@@ -7,7 +7,7 @@ export type TTypographyVariants = "h1" | "h2" | "h3" | "body1" | "body2" | "body
 
 export type TTypographyOwnProps<E extends ElementType = ElementType> = {
   variant?: TTypographyVariants;
-  color?: "primary" | "secondary" | "opacity" | "positive" | "negative";
+  color?: "primary" | "secondary" | "opacity" | "positive" | "negative" | "warning";
   weight?: "400" | "500" | "600" | "700";
   children?: ReactNode;
   className?: string;
@@ -22,7 +22,7 @@ const defaultElement = "p";
 export function UiTypography<E extends ElementType = typeof defaultElement>({
   variant = "body1",
   color = "primary",
-  weight = "400",
+  weight,
   children,
   className,
   as,
@@ -35,7 +35,13 @@ export function UiTypography<E extends ElementType = typeof defaultElement>({
     "700": "weight-700",
   };
 
-  const classes = clsx(className, s.root, s[variant], s[color], s[fontWeightMapper[weight]]);
+  const classes = clsx(
+    s.root,
+    s[variant],
+    s[color],
+    weight && s[fontWeightMapper[weight]],
+    className,
+  );
   const TagName = as || defaultElement;
 
   return (

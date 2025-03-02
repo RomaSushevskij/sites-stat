@@ -6,12 +6,12 @@ import { AngleTopIcon } from "@/shared/ui/icons/angle-top.tsx";
 import { SortState, TableColumn } from "../model/types.ts";
 import s from "./ui-table.module.css";
 
-export const UiThContainer = <T, SortedValue>({
+export const UiThContainer = <T,>({
   column,
   sortState,
   isActiveSortColumn,
 }: {
-  column: TableColumn<T, SortedValue>;
+  column: TableColumn<T>;
   isActiveSortColumn: boolean;
   sortState: SortState<T> | null;
 }) => {

@@ -50,6 +50,10 @@
   color: var(--negative);
 }
 
+.warning {
+  color: var(--warning);
+}
+
 .weight-400 {
   font-weight: 400;
 }

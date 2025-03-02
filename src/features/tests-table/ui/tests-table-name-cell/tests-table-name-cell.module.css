@@ -1,0 +1,22 @@
+.type_indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0.25rem;
+  height: 100%;
+
+  background: red;
+}
+
+.mvt {
+  background: var(--test-type-mvt);
+}
+
+.classic {
+  background: var(--test-type-classic);
+}
+
+.server_side {
+  background: var(--test-type-server_side);
+}
