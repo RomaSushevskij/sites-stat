@@ -37,6 +37,7 @@
   }
 
   &:last-child {
+    width: 0.0625rem;
     border-top-right-radius: var(--rounded-sm);
     border-bottom-right-radius: var(--rounded-sm);
   }

@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import s from "./app-layout.module.css";
 import { UiTypography } from "@/shared/ui/ui-typography";
 import { AngleTopIcon } from "@/shared/ui/icons/angle-top.tsx";
 import { AppRoutes, RoutePath } from "@/shared/config/routeConfig";
+
+import s from "./app-layout.module.css";
 
 export const AppLayout = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
